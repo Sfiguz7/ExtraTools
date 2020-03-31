@@ -1,10 +1,10 @@
-name: SlimefunAddon
+name: ExtraTools
 version: ${project.version}
-author: CHANGEME
-description: A generic Slimefun4-Addon
-website: https://github.com/TheBusyBiscuit/Slimefun4-Addon
+author: Sfiguz7
+description: A Slimefun4-Addon aimed at implementing useful tools
+website: https://github.com/Sfiguz7/ExtraTools
 
-main: me.CHANGEME.slimefunaddon.ExampleAddon
+main: me.sfiguz7.extratools.ExtraTools
 depend: [Slimefun]
 
 api-version: 1.14
