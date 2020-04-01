@@ -9,6 +9,7 @@ import me.mrCookieSlime.Slimefun.Lists.Categories;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
+import me.sfiguz7.extratools.implementation.machines.ElectricComposter;
 import me.sfiguz7.extratools.implementation.machines.GoldTransmuter;
 import me.sfiguz7.extratools.implementation.tools.Hammer;
 import org.bukkit.Material;
@@ -80,6 +81,46 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 
 		researchId++;
 		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Gold_Transmuter"), researchId, "Gold_Transmuter", 12), GOLD_TRANSMUTER);
+
+
+
+		SlimefunItemStack ELECTRIC_COMPOSTER = new SlimefunItemStack("ELECTRIC_COMPOSTER", Material.MAGENTA_TERRACOTTA, "&cElectric Composter", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 1x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(18));
+		SlimefunItemStack ELECTRIC_COMPOSTER_2 = new SlimefunItemStack("ELECTRIC_COMPOSTER_2", Material.MAGENTA_TERRACOTTA, "&cElectric Composter &7(&eII&7)", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 4x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(50));
+
+		new ElectricComposter(extra_tools, ELECTRIC_COMPOSTER, RecipeType.ENHANCED_CRAFTING_TABLE,
+				new ItemStack[] {SlimefunItems.GILDED_IRON, SlimefunItems.MAGNESIUM_INGOT, SlimefunItems.GILDED_IRON, SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.COMPOSTER, SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.IRON_HOE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_HOE)}) {
+
+			@Override
+			public int getEnergyConsumption() {
+				return 9;
+			}
+
+			@Override
+			public int getSpeed() {
+				return 1;
+			}
+
+		}.register(this);
+		new ElectricComposter(extra_tools, ELECTRIC_COMPOSTER_2, RecipeType.ENHANCED_CRAFTING_TABLE,
+				new ItemStack[] {SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.ELECTRIC_MOTOR, ELECTRIC_COMPOSTER, SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.DIAMOND_HOE), SlimefunItems.LARGE_CAPACITOR, new ItemStack(Material.DIAMOND_HOE)}) {
+
+			@Override
+			public int getEnergyConsumption() {
+				return 25;
+			}
+
+			@Override
+			public int getSpeed() {
+				return 4;
+			}
+
+		}.register(this);
+
+		researchId++;
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter"), researchId, "Electric_Composter", 18), ELECTRIC_COMPOSTER);
+		researchId++;
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter_2"), researchId, "Electric_Composter_2", 18), ELECTRIC_COMPOSTER_2);
+
 
 
 

@@ -55,7 +55,7 @@ public abstract class GoldTransmuter extends AContainer implements RecipeDisplay
 
     @Override
     public String getInventoryTitle() {
-        return "&bGold Transmuter";
+        return "&6Gold Transmuter";
     }
 
     @Override
