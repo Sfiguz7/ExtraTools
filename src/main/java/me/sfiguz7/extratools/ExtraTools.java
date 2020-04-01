@@ -2,10 +2,7 @@ package me.sfiguz7.extratools;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
-import io.github.thebusybiscuit.slimefun4.implementation.items.electric.machines.Freezer;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import me.mrCookieSlime.CSCoreLibPlugin.general.String.StringUtils;
-import me.mrCookieSlime.Slimefun.Lists.Categories;
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
@@ -21,10 +18,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
-import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 
 public class ExtraTools extends JavaPlugin implements SlimefunAddon {
@@ -59,7 +54,7 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		new Hammer(extra_tools, HAMMER, RecipeType.MAGIC_WORKBENCH, recipe).register(this);
 
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Hammer"), researchId, "Hammer", 3), HAMMER);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "hammer"), researchId, "Hammer", 3), HAMMER);
 
 
 
@@ -81,7 +76,7 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		}.register(this);
 
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Gold_Transmuter"), researchId, "Gold_Transmuter", 12), GOLD_TRANSMUTER);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "gold_transmuter"), researchId, "Gold_Transmuter", 12), GOLD_TRANSMUTER);
 
 
 
@@ -119,9 +114,9 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		}.register(this);
 
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter"), researchId, "Electric_Composter", 18), ELECTRIC_COMPOSTER);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "electric_composter"), researchId, "Electric_Composter", 18), ELECTRIC_COMPOSTER);
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter_2"), researchId, "Electric_Composter_2", 18), ELECTRIC_COMPOSTER_2);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "electric_composter_2"), researchId, "Electric_Composter_2", 18), ELECTRIC_COMPOSTER_2);
 
 
 
@@ -159,9 +154,9 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		}.register(this);
 
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Crucible"), researchId, "Electric_Crucible", 16), ELECTRIC_CRUCIBLE);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "electric_crucible"), researchId, "Electric_Crucible", 16), ELECTRIC_CRUCIBLE);
 		researchId++;
-		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Crucible_2"), researchId, "Electric_Crucible_2", 28), ELECTRIC_CRUCIBLE_2);
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "electric_crucible_2"), researchId, "Electric_Crucible_2", 28), ELECTRIC_CRUCIBLE_2);
 
 
 
