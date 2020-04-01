@@ -10,6 +10,7 @@ import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.sfiguz7.extratools.implementation.machines.ElectricComposter;
+import me.sfiguz7.extratools.implementation.machines.ElectricCrucible;
 import me.sfiguz7.extratools.implementation.machines.GoldTransmuter;
 import me.sfiguz7.extratools.implementation.tools.Hammer;
 import org.bukkit.Material;
@@ -87,6 +88,7 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		SlimefunItemStack ELECTRIC_COMPOSTER = new SlimefunItemStack("ELECTRIC_COMPOSTER", Material.MAGENTA_TERRACOTTA, "&cElectric Composter", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 1x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(18));
 		SlimefunItemStack ELECTRIC_COMPOSTER_2 = new SlimefunItemStack("ELECTRIC_COMPOSTER_2", Material.MAGENTA_TERRACOTTA, "&cElectric Composter &7(&eII&7)", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 4x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(50));
 
+
 		new ElectricComposter(extra_tools, ELECTRIC_COMPOSTER, RecipeType.ENHANCED_CRAFTING_TABLE,
 				new ItemStack[] {SlimefunItems.GILDED_IRON, SlimefunItems.MAGNESIUM_INGOT, SlimefunItems.GILDED_IRON, SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.COMPOSTER, SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.IRON_HOE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_HOE)}) {
 
@@ -120,6 +122,46 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter"), researchId, "Electric_Composter", 18), ELECTRIC_COMPOSTER);
 		researchId++;
 		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Composter_2"), researchId, "Electric_Composter_2", 18), ELECTRIC_COMPOSTER_2);
+
+
+
+		SlimefunItemStack ELECTRIC_CRUCIBLE = new SlimefunItemStack("ELECTRIC_CRUCIBLE", Material.BLACK_TERRACOTTA, "&cElectric Crucible", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 1x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(18));
+		SlimefunItemStack ELECTRIC_CRUCIBLE_2 = new SlimefunItemStack("ELECTRIC_CRUCIBLE_2", Material.BLACK_TERRACOTTA, "&cElectric Crucible &7(&eII&7)", "", LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE), "&8\u21E8 &7Speed: 4x", LoreBuilder.powerBuffer(256), LoreBuilder.powerPerSecond(50));
+
+
+		new ElectricCrucible(extra_tools, ELECTRIC_CRUCIBLE, RecipeType.ENHANCED_CRAFTING_TABLE,
+				new ItemStack[] {new ItemStack(Material.LAVA_BUCKET), SlimefunItems.CORINTHIAN_BRONZE_INGOT, new ItemStack(Material.LAVA_BUCKET), SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.CRUCIBLE, SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_PICKAXE)}) {
+
+			@Override
+			public int getEnergyConsumption() {
+				return 9;
+			}
+
+			@Override
+			public int getSpeed() {
+				return 1;
+			}
+
+		}.register(this);
+		new ElectricCrucible(extra_tools, ELECTRIC_CRUCIBLE_2, RecipeType.ENHANCED_CRAFTING_TABLE,
+				new ItemStack[] {SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.ELECTRIC_MOTOR, ELECTRIC_CRUCIBLE, SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.DIAMOND_PICKAXE), SlimefunItems.LARGE_CAPACITOR, new ItemStack(Material.DIAMOND_PICKAXE)}) {
+
+			@Override
+			public int getEnergyConsumption() {
+				return 25;
+			}
+
+			@Override
+			public int getSpeed() {
+				return 4;
+			}
+
+		}.register(this);
+
+		researchId++;
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Crucible"), researchId, "Electric_Crucible", 16), ELECTRIC_CRUCIBLE);
+		researchId++;
+		Slimefun.registerResearch(new Research(new NamespacedKey(this, "Electric_Crucible_2"), researchId, "Electric_Crucible_2", 28), ELECTRIC_CRUCIBLE_2);
 
 
 
