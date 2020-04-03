@@ -34,6 +34,7 @@ public abstract class GoldTransmuter extends AContainer implements RecipeDisplay
         registerRecipe(6, new ItemStack[] { SlimefunItems.GOLD_20K }, new ItemStack[] { new ItemStack(Material.GOLD_NUGGET, 40) });
         registerRecipe(6, new ItemStack[] { SlimefunItems.GOLD_22K }, new ItemStack[] { new ItemStack(Material.GOLD_NUGGET, 45) });
         registerRecipe(7, new ItemStack[] { SlimefunItems.GOLD_24K }, new ItemStack[] { new ItemStack(Material.GOLD_NUGGET, 49) });
+        registerRecipe(2, new ItemStack[] { new ItemStack(Material.GOLD_INGOT) }, new ItemStack[] { SlimefunItems.GOLD_DUST });
     }
 
     @Override
