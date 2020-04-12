@@ -3,7 +3,6 @@ package me.sfiguz7.extratools.implementation.machines;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
@@ -29,7 +28,7 @@ import org.bukkit.inventory.ItemStack;
 public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implements InventoryBlock, EnergyNetComponent {
 
     private static final int ENERGY_CONSUMPTION = 32;
-    private int decrement = 20;
+    private int decrement = 2;
 
     private final int[] border = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44, 22};
     private final int[] inputBorder = {};
@@ -45,7 +44,6 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
         for (int i : border) {
             preset.addItem(i, new CustomItem(new ItemStack(Material.GRAY_STAINED_GLASS_PANE), " "), ChestMenuUtils.getEmptyClickHandler());
         }
-
         for (int i : inputBorder) {
             preset.addItem(i, new CustomItem(new ItemStack(Material.CYAN_STAINED_GLASS_PANE), " "), ChestMenuUtils.getEmptyClickHandler());
         }
@@ -94,13 +92,27 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
         return new BlockTicker() {
 
             @Override
-            public void tick(Block b, SlimefunItem sf, Config data) {
+            // Fires first!! The method tick() fires after this
+            public void uniqueTick(){
+                // Needed to keep track of all cobble gens at once,
+                // All it does is set back to max (for now 2, will be customizable)
+                // when it reaches the lowest possible (AKA 1)
+                if (decrement == 1) {
+                    decrement = 2;
+                    return;
+                }
+                decrement--;
 
-                if (--decrement != 0) {
+            }
+
+            @Override
+            public void tick(Block b, SlimefunItem sf, Config data) {
+                // We only act once per decrement cycle, when decrement got to
+                // lowest and has been reset
+                if (decrement == 2) {
                     return;
                 }
 
-                decrement = 2;
                 ItemStack output = new ItemStack(Material.COBBLESTONE);
 
                 if (ChargableBlock.getCharge(b) >= ENERGY_CONSUMPTION) {

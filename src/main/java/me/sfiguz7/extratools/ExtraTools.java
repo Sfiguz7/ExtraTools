@@ -182,7 +182,7 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
         new CobblestoneGenerator(extra_tools, cobblestoneGenerator, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[]{SlimefunItems.PROGRAMMABLE_ANDROID_MINER, SlimefunItems.MAGNESIUM_INGOT, SlimefunItems.PROGRAMMABLE_ANDROID_MINER,
                         new ItemStack(Material.WATER_BUCKET), SlimefunItems.BLISTERING_INGOT_3, new ItemStack(Material.LAVA_BUCKET),
-                        SlimefunItems.PROGRAMMABLE_ANDROID_MINER, SlimefunItems.BIG_CAPACITOR, SlimefunItems.PROGRAMMABLE_ANDROID_MINER,}
+                        SlimefunItems.PROGRAMMABLE_ANDROID_MINER, SlimefunItems.BIG_CAPACITOR, SlimefunItems.PROGRAMMABLE_ANDROID_MINER}
         ).register(this);
 
         Slimefun.registerResearch(new Research(new NamespacedKey(this, "cobblestone_generator"),
