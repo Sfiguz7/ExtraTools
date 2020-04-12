@@ -23,14 +23,19 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
     protected void registerDefaultRecipes() {
 
         for (Material leave : MaterialCollections.getAllLeaves()) {
-            registerRecipe(8, new ItemStack[] { new ItemStack(leave, 8) }, new ItemStack[] { new ItemStack(Material.DIRT) });
+            registerRecipe(8, new ItemStack[] {new ItemStack(leave, 8)},
+                new ItemStack[] {new ItemStack(Material.DIRT)});
         }
         for (Material sapling : MaterialCollections.getAllSaplings()) {
-            registerRecipe(8, new ItemStack[] { new ItemStack(sapling, 8) }, new ItemStack[] { new ItemStack(Material.DIRT) });
+            registerRecipe(8, new ItemStack[] {new ItemStack(sapling, 8)},
+                new ItemStack[] {new ItemStack(Material.DIRT)});
         }
-        registerRecipe(8, new ItemStack[] { new ItemStack(Material.STONE, 4) }, new ItemStack[] { new ItemStack(Material.NETHERRACK) });
-        registerRecipe(8, new ItemStack[] { new ItemStack(Material.SAND, 2) }, new ItemStack[] { new ItemStack(Material.SOUL_SAND) });
-        registerRecipe(8, new ItemStack[] { new ItemStack(Material.WHEAT, 4) }, new ItemStack[] { new ItemStack(Material.NETHER_WART) });
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.STONE, 4)},
+            new ItemStack[] {new ItemStack(Material.NETHERRACK)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.SAND, 2)},
+            new ItemStack[] {new ItemStack(Material.SOUL_SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.WHEAT, 4)},
+            new ItemStack[] {new ItemStack(Material.NETHER_WART)});
 
     }
 
