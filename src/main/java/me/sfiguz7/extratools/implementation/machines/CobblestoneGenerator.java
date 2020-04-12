@@ -25,12 +25,14 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 
-public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implements InventoryBlock, EnergyNetComponent {
+public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implements InventoryBlock,
+    EnergyNetComponent {
 
     private static final int ENERGY_CONSUMPTION = 32;
     private int decrement = 2;
 
-    private final int[] border = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44, 22};
+    private final int[] border = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 27, 28, 29, 30,
+        31, 36, 37, 38, 39, 40, 41, 42, 43, 44, 22};
     private final int[] inputBorder = {};
     private final int[] outputBorder = {14, 15, 16, 17, 23, 26, 32, 33, 34, 35};
 
@@ -42,13 +44,16 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
 
     private void constructMenu(BlockMenuPreset preset) {
         for (int i : border) {
-            preset.addItem(i, new CustomItem(new ItemStack(Material.GRAY_STAINED_GLASS_PANE), " "), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, new CustomItem(new ItemStack(Material.GRAY_STAINED_GLASS_PANE), " "),
+                ChestMenuUtils.getEmptyClickHandler());
         }
         for (int i : inputBorder) {
-            preset.addItem(i, new CustomItem(new ItemStack(Material.CYAN_STAINED_GLASS_PANE), " "), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, new CustomItem(new ItemStack(Material.CYAN_STAINED_GLASS_PANE), " "),
+                ChestMenuUtils.getEmptyClickHandler());
         }
         for (int i : outputBorder) {
-            preset.addItem(i, new CustomItem(new ItemStack(Material.ORANGE_STAINED_GLASS_PANE), " "), ChestMenuUtils.getEmptyClickHandler());
+            preset.addItem(i, new CustomItem(new ItemStack(Material.ORANGE_STAINED_GLASS_PANE), " "),
+                ChestMenuUtils.getEmptyClickHandler());
         }
 
         for (int i : getOutputSlots()) {
@@ -60,7 +65,8 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
                 }
 
                 @Override
-                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
+                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor,
+                                       ClickAction action) {
                     return cursor == null || cursor.getType() == Material.AIR;
                 }
             });
@@ -69,12 +75,12 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
 
     @Override
     public int[] getInputSlots() {
-        return new int[]{};
+        return new int[] {};
     }
 
     @Override
     public int[] getOutputSlots() {
-        return new int[]{24, 25};
+        return new int[] {24, 25};
     }
 
     @Override
@@ -93,7 +99,7 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
 
             @Override
             // Fires first!! The method tick() fires after this
-            public void uniqueTick(){
+            public void uniqueTick() {
                 // Needed to keep track of all cobble gens at once,
                 // All it does is set back to max (for now 2, will be customizable)
                 // when it reaches the lowest possible (AKA 1)
