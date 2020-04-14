@@ -56,7 +56,7 @@ public abstract class Vaporizer extends AContainer implements RecipeDisplayItem 
 
     @Override
     public String getMachineIdentifier() {
-        return "Vaporizer";
+        return "VAPORIZER";
     }
 
     @Override
