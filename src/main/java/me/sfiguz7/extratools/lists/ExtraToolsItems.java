@@ -81,4 +81,13 @@ public final class ExtraToolsItems {
             LoreBuilder.powerBuffer(256),
             LoreBuilder.powerPerSecond(16)
     );
+    public static final SlimefunItemStack PULVERIZER = new SlimefunItemStack("PULVERIZER",
+            Material.ORANGE_TERRACOTTA,
+            "&cPulverizer",
+            "",
+            LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
+            "&8\u21E8 &7Speed: 1x",
+            LoreBuilder.powerBuffer(256),
+            LoreBuilder.powerPerSecond(18)
+    );
 }

@@ -10,6 +10,7 @@ import me.sfiguz7.extratools.implementation.machines.CobblestoneGenerator;
 import me.sfiguz7.extratools.implementation.machines.ConcreteFactory;
 import me.sfiguz7.extratools.implementation.machines.ElectricComposter;
 import me.sfiguz7.extratools.implementation.machines.GoldTransmuter;
+import me.sfiguz7.extratools.implementation.machines.Pulverizer;
 import me.sfiguz7.extratools.implementation.machines.Vaporizer;
 import me.sfiguz7.extratools.implementation.tools.Hammer;
 import org.bukkit.Material;
@@ -23,6 +24,7 @@ import static me.sfiguz7.extratools.lists.ExtraToolsItems.ELECTRIC_COMPOSTER;
 import static me.sfiguz7.extratools.lists.ExtraToolsItems.ELECTRIC_COMPOSTER_2;
 import static me.sfiguz7.extratools.lists.ExtraToolsItems.GOLD_TRANSMUTER;
 import static me.sfiguz7.extratools.lists.ExtraToolsItems.HAMMER;
+import static me.sfiguz7.extratools.lists.ExtraToolsItems.PULVERIZER;
 import static me.sfiguz7.extratools.lists.ExtraToolsItems.VAPORIZER;
 import static me.sfiguz7.extratools.lists.ExtraToolsItems.extra_tools;
 
@@ -196,6 +198,29 @@ public class ExtraToolsPlugin extends JavaPlugin implements SlimefunAddon {
                 CONCRETE_FACTORY
         );
 
+        new Pulverizer(extra_tools, PULVERIZER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[]{SlimefunItems.SILICON, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SILICON,
+                        SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.STEEL_PLATE, SlimefunItems.ELECTRIC_MOTOR,
+                        new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_PICKAXE)}
+        ) {
+
+            @Override
+            public int getEnergyConsumption() {
+                return 25;
+            }
+
+            @Override
+            public int getSpeed() {
+                return 4;
+            }
+
+        }.register(this);
+        Slimefun.registerResearch(new Research(new NamespacedKey(this, "PULVERIZER"),
+                        ++researchId,
+                        "Pulverizer",
+                        18),
+                PULVERIZER
+        );
 
     }
 
