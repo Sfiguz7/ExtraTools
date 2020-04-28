@@ -2,20 +2,23 @@ package me.sfiguz7.extratools.implementation.machines;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ConcreteFactory extends AContainer implements RecipeDisplayItem {
+public class ConcreteFactory extends AContainer implements RecipeDisplayItem {
 
-    public ConcreteFactory(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    public ConcreteFactory() {
+        super(ETItems.extra_tools, ETItems.CONCRETE_FACTORY, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[]{new ItemStack(Material.WATER_BUCKET), SlimefunItems.GILDED_IRON, new ItemStack(Material.WATER_BUCKET),
+                        SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.ADVANCED_CIRCUIT_BOARD,
+                        new ItemStack(Material.WATER_BUCKET), SlimefunItems.SMALL_CAPACITOR, new ItemStack(Material.WATER_BUCKET)});
     }
 
     @Override
@@ -86,6 +89,16 @@ public abstract class ConcreteFactory extends AContainer implements RecipeDispla
     @Override
     public int getCapacity() {
         return 256;
+    }
+
+    @Override
+    public int getEnergyConsumption() {
+        return 8;
+    }
+
+    @Override
+    public int getSpeed() {
+        return 1;
     }
 
 }

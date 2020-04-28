@@ -1,10 +1,10 @@
-name: ExtraToolsPlugin
+name: ExtraTools
 version: ${project.version}
 author: Sfiguz7
 description: A Slimefun4-Addon aimed at implementing useful tools
-website: https://github.com/Sfiguz7/ExtraToolsPlugin
+website: https://github.com/Sfiguz7/ExtraTools
 
-main: me.sfiguz7.extratools.ExtraToolsPlugin
+main: me.sfiguz7.extratools.ExtraTools
 depend: [Slimefun]
 
 api-version: 1.14

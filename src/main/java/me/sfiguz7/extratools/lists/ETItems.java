@@ -6,17 +6,17 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.sfiguz7.extratools.ExtraToolsPlugin;
+import me.sfiguz7.extratools.ExtraTools;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
-public final class ExtraToolsItems {
+public final class ETItems {
 
-    private ExtraToolsItems() {
+    private ETItems() {
     }
 
     /* Category */
-    public static final Category extra_tools = new Category(new NamespacedKey(ExtraToolsPlugin.getInstance(),
+    public static final Category extra_tools = new Category(new NamespacedKey(ExtraTools.getInstance(),
             "extra_tools"),
             new CustomItem(Material.DIAMOND_AXE, "&4Extra Tools")
     );

@@ -2,40 +2,46 @@ package me.sfiguz7.extratools.implementation.machines;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.materials.MaterialCollections;
+import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ElectricComposter extends AContainer implements RecipeDisplayItem {
+public class ElectricComposter extends AContainer implements RecipeDisplayItem {
 
-    public ElectricComposter(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+    private int energyConsumption;
+    private int speed;
+
+    public ElectricComposter(Tier tier) {
+        super(ETItems.extra_tools, ETItems.ELECTRIC_COMPOSTER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                tier.recipe);
+        this.energyConsumption = tier.energyCons;
+        this.speed = tier.speed;
     }
 
     @Override
     protected void registerDefaultRecipes() {
 
         for (Material leave : MaterialCollections.getAllLeaves()) {
-            registerRecipe(8, new ItemStack[] {new ItemStack(leave, 8)},
-                new ItemStack[] {new ItemStack(Material.DIRT)});
+            registerRecipe(8, new ItemStack[]{new ItemStack(leave, 8)},
+                    new ItemStack[]{new ItemStack(Material.DIRT)});
         }
         for (Material sapling : MaterialCollections.getAllSaplings()) {
-            registerRecipe(8, new ItemStack[] {new ItemStack(sapling, 8)},
-                new ItemStack[] {new ItemStack(Material.DIRT)});
+            registerRecipe(8, new ItemStack[]{new ItemStack(sapling, 8)},
+                    new ItemStack[]{new ItemStack(Material.DIRT)});
         }
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.STONE, 4)},
-            new ItemStack[] {new ItemStack(Material.NETHERRACK)});
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.SAND, 2)},
-            new ItemStack[] {new ItemStack(Material.SOUL_SAND)});
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.WHEAT, 4)},
-            new ItemStack[] {new ItemStack(Material.NETHER_WART)});
+        registerRecipe(8, new ItemStack[]{new ItemStack(Material.STONE, 4)},
+                new ItemStack[]{new ItemStack(Material.NETHERRACK)});
+        registerRecipe(8, new ItemStack[]{new ItemStack(Material.SAND, 2)},
+                new ItemStack[]{new ItemStack(Material.SOUL_SAND)});
+        registerRecipe(8, new ItemStack[]{new ItemStack(Material.WHEAT, 4)},
+                new ItemStack[]{new ItemStack(Material.NETHER_WART)});
 
     }
 
@@ -69,6 +75,43 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
     @Override
     public int getCapacity() {
         return 256;
+    }
+
+    @Override
+    public int getEnergyConsumption() {
+        return energyConsumption;
+    }
+
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    public enum Tier {
+        ONE(new ItemStack[]{
+                SlimefunItems.GILDED_IRON, SlimefunItems.MAGNESIUM_INGOT, SlimefunItems.GILDED_IRON,
+                SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.COMPOSTER, SlimefunItems.ELECTRIC_MOTOR,
+                new ItemStack(Material.IRON_HOE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_HOE)},
+                9,
+                1
+        ),
+        TWO(new ItemStack[]{SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.BLISTERING_INGOT_3,
+                SlimefunItems.HARDENED_METAL_INGOT,
+                SlimefunItems.ELECTRIC_MOTOR, ETItems.ELECTRIC_COMPOSTER, SlimefunItems.ELECTRIC_MOTOR,
+                new ItemStack(Material.DIAMOND_HOE), SlimefunItems.LARGE_CAPACITOR, new ItemStack(Material.DIAMOND_HOE)},
+                25,
+                4
+        );
+
+        private final ItemStack[] recipe;
+        private int energyCons;
+        private int speed;
+
+        Tier(ItemStack[] recipe, int energyCons, int speed) {
+            this.recipe = recipe;
+            this.energyCons = energyCons;
+            this.speed = speed;
+        }
     }
 
 }
