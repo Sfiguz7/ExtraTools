@@ -48,13 +48,37 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
                 ETItems.GOLD_TRANSMUTER
         );
 
-        for (ElectricComposter.Tier tier : ElectricComposter.Tier.values()) {
-            new ElectricComposter(tier).register(this);
-        }
+        new ElectricComposter(ElectricComposter.Tier.ONE){
+
+            @Override
+            public int getEnergyConsumption() {
+                return 9;
+            }
+
+            @Override
+            public int getSpeed() {
+                return 1;
+            }
+
+        }.register(this);
         Slimefun.registerResearch(new Research(new NamespacedKey(this, "ELECTRIC_COMPOSTER"),
                         ++researchId, "Electric Composter", 18),
                 ETItems.ELECTRIC_COMPOSTER
         );
+
+        new ElectricComposter(ElectricComposter.Tier.TWO){
+
+            @Override
+            public int getEnergyConsumption() {
+                return 25;
+            }
+
+            @Override
+            public int getSpeed() {
+                return 4;
+            }
+
+        }.register(this);
         Slimefun.registerResearch(new Research(new NamespacedKey(this, "ELECTRIC_COMPOSTER_2"),
                         ++researchId, "Electric Composter II", 18),
                 ETItems.ELECTRIC_COMPOSTER_2
