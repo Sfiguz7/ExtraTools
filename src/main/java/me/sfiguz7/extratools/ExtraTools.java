@@ -4,6 +4,8 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
+import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import me.sfiguz7.extratools.implementation.machines.CobblestoneGenerator;
 import me.sfiguz7.extratools.implementation.machines.ConcreteFactory;
 import me.sfiguz7.extratools.implementation.machines.ElectricComposter;
@@ -25,12 +27,9 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 
         instance = this;
 
-		/*
-		Config cfg = new Config(this);
-
-		if (cfg.getBoolean("options.auto-update")) {
-		}
-		*/
+        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
+            new GitHubBuildsUpdater(this, getFile(), "Sfiguz7/ExtraTools/master").start();
+        }
 
         int bStatsId = 6945;
         new Metrics(this, bStatsId);

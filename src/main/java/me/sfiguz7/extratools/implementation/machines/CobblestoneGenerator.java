@@ -121,7 +121,7 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
             public void tick(Block b, SlimefunItem sf, Config data) {
                 // We only act once per decrement cycle, when decrement got to
                 // lowest and has been reset
-                if (decrement == 2) {
+                if (decrement != 2) {
                     return;
                 }
 
