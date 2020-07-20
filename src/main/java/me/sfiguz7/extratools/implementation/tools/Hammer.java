@@ -1,9 +1,9 @@
 package me.sfiguz7.extratools.implementation.tools;
 
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SimpleSlimefunItem;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
@@ -78,6 +78,9 @@ public class Hammer extends SimpleSlimefunItem<BlockBreakHandler> {
                     }
                     case GOLD_ORE: {
                         return SlimefunItems.GOLD_DUST;
+                    }
+                    case NETHERRACK: {
+                        return new ItemStack(Material.SOUL_SAND);
                     }
                 }
 

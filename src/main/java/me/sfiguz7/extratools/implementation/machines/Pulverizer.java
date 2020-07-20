@@ -48,6 +48,9 @@ public class Pulverizer extends AContainer implements RecipeDisplayItem {
         registerRecipe(8, new ItemStack[]{new ItemStack(Material.PODZOL, 4)},
                 new ItemStack[]{new ItemStack(Material.SAND)});
 
+        registerRecipe(8, new ItemStack[]{new ItemStack(Material.NETHERRACK, 4)},
+            new ItemStack[]{new ItemStack(Material.SOUL_SAND)});
+
     }
 
     @Override
