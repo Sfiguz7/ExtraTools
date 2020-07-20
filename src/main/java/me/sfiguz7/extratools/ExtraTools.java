@@ -15,6 +15,8 @@ import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 
     public static ExtraTools instance;
@@ -24,6 +26,10 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
 
         instance = this;
+
+        if (!new File(getDataFolder(), "config.yml").exists()) {
+            saveDefaultConfig();
+        }
 
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "Sfiguz7/ExtraTools/master").start();
