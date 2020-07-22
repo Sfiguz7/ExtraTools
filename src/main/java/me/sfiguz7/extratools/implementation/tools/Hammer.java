@@ -46,6 +46,7 @@ public class Hammer extends SimpleSlimefunItem<BlockBreakHandler> {
                         return true;
                     }
 
+                    //Can't throw NPEs now
                     b.getLocation().getWorld().dropItemNaturally(b.getLocation(), drop);
                     e.setDropItems(false);
                     return true;
