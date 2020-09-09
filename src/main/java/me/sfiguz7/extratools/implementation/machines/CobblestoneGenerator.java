@@ -13,7 +13,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.interfaces.InventoryBlock;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.energy.ChargableBlock;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
@@ -127,14 +126,14 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
 
                 ItemStack output = new ItemStack(Material.COBBLESTONE);
 
-                if (ChargableBlock.getCharge(b) >= ENERGY_CONSUMPTION) {
+                if (getCharge(b.getLocation()) >= ENERGY_CONSUMPTION) {
                     BlockMenu menu = BlockStorage.getInventory(b);
 
                     if (!menu.fits(output, getOutputSlots())) {
                         return;
                     }
 
-                    ChargableBlock.addCharge(b, -ENERGY_CONSUMPTION);
+                    addCharge(b.getLocation(), -ENERGY_CONSUMPTION);
                     menu.pushItem(output, getOutputSlots());
                 }
             }

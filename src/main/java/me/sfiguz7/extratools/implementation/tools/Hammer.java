@@ -58,6 +58,7 @@ public class Hammer extends SimpleSlimefunItem<BlockBreakHandler> {
             public ItemStack getDrop(Block b) {
 
                 Material m = b.getType();
+                System.out.println();
 
                 switch (m) {
                     case STONE:
