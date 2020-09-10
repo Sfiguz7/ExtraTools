@@ -17,24 +17,26 @@ public class Vaporizer extends AContainer implements RecipeDisplayItem {
 
     public Vaporizer() {
         super(ETItems.extra_tools, ETItems.VAPORIZER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[]{new ItemStack(Material.MAGMA_BLOCK), SlimefunItems.ELECTRIC_MOTOR, new ItemStack(Material.MAGMA_BLOCK),
-                        SlimefunItems.HEATING_COIL, SlimefunItems.FLUID_PUMP, SlimefunItems.HEATING_COIL,
-                        new ItemStack(Material.MAGMA_BLOCK), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.MAGMA_BLOCK)});
+            new ItemStack[] {new ItemStack(Material.MAGMA_BLOCK), SlimefunItems.ELECTRIC_MOTOR,
+                new ItemStack(Material.MAGMA_BLOCK),
+                SlimefunItems.HEATING_COIL, SlimefunItems.FLUID_PUMP, SlimefunItems.HEATING_COIL,
+                new ItemStack(Material.MAGMA_BLOCK), SlimefunItems.MEDIUM_CAPACITOR,
+                new ItemStack(Material.MAGMA_BLOCK)});
     }
 
     @Override
     protected void registerDefaultRecipes() {
 
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.WATER_BUCKET)},
-                new ItemStack[]{new ItemStack(Material.BUCKET),
-                        new CustomItem(SlimefunItems.SALT, 4)
-                });
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.LAVA_BUCKET)},
-                new ItemStack[]{new ItemStack(Material.BUCKET),
-                        new CustomItem(SlimefunItems.SULFATE, 16)
-                });
-        registerRecipe(3, new ItemStack[]{new ItemStack(Material.MAGMA_BLOCK)},
-                new ItemStack[]{SlimefunItems.SULFATE});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.WATER_BUCKET)},
+            new ItemStack[] {new ItemStack(Material.BUCKET),
+                new CustomItem(SlimefunItems.SALT, 4)
+            });
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.LAVA_BUCKET)},
+            new ItemStack[] {new ItemStack(Material.BUCKET),
+                new CustomItem(SlimefunItems.SULFATE, 16)
+            });
+        registerRecipe(3, new ItemStack[] {new ItemStack(Material.MAGMA_BLOCK)},
+            new ItemStack[] {SlimefunItems.SULFATE});
 
     }
 

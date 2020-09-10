@@ -16,40 +16,41 @@ public class Pulverizer extends AContainer implements RecipeDisplayItem {
 
     public Pulverizer() {
         super(ETItems.extra_tools, ETItems.PULVERIZER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[]{SlimefunItems.SILICON, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SILICON,
-                        SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.STEEL_PLATE, SlimefunItems.ELECTRIC_MOTOR,
-                        new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_PICKAXE)});
+            new ItemStack[] {SlimefunItems.SILICON, SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SILICON,
+                SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.STEEL_PLATE, SlimefunItems.ELECTRIC_MOTOR,
+                new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR,
+                new ItemStack(Material.IRON_PICKAXE)});
     }
 
     @Override
     protected void registerDefaultRecipes() {
 
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.STONE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.GRANITE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.DIORITE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.ANDESITE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.COBBLESTONE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.ANDESITE, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.STONE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.GRANITE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.DIORITE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.ANDESITE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.COBBLESTONE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.ANDESITE, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
 
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.GRAVEL, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.GRASS_BLOCK, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.DIRT, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.COARSE_DIRT, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.PODZOL, 4)},
-                new ItemStack[]{new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.GRAVEL, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.GRASS_BLOCK, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.DIRT, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.COARSE_DIRT, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.PODZOL, 4)},
+            new ItemStack[] {new ItemStack(Material.SAND)});
 
-        registerRecipe(8, new ItemStack[]{new ItemStack(Material.NETHERRACK, 4)},
-            new ItemStack[]{new ItemStack(Material.SOUL_SAND)});
+        registerRecipe(8, new ItemStack[] {new ItemStack(Material.NETHERRACK, 4)},
+            new ItemStack[] {new ItemStack(Material.SOUL_SAND)});
 
     }
 
