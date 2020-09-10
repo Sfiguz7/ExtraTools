@@ -17,10 +17,10 @@ public class Hammer extends SimpleSlimefunItem<BlockBreakHandler> {
 
     public Hammer() {
         super(ETItems.extra_tools, ETItems.HAMMER, RecipeType.MAGIC_WORKBENCH,
-                new ItemStack[]{new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
-                        new ItemStack(Material.IRON_INGOT),
-                        new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
-                        null, new ItemStack(Material.STICK), null});
+            new ItemStack[] {new ItemStack(Material.IRON_INGOT), new ItemStack(Material.IRON_INGOT),
+                new ItemStack(Material.IRON_INGOT),
+                new ItemStack(Material.IRON_INGOT), new ItemStack(Material.STICK), new ItemStack(Material.IRON_INGOT),
+                null, new ItemStack(Material.STICK), null});
     }
 
     @Override
