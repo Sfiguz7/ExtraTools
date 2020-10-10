@@ -5,6 +5,8 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -20,6 +22,17 @@ public class Pulverizer extends AContainer implements RecipeDisplayItem {
                 SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.STEEL_PLATE, SlimefunItems.ELECTRIC_MOTOR,
                 new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR,
                 new ItemStack(Material.IRON_PICKAXE)});
+
+        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+            BlockMenu inv = BlockStorage.getInventory(b);
+
+            if (inv != null) {
+                inv.dropItems(b.getLocation(), getOutputSlots());
+                inv.dropItems(b.getLocation(), getInputSlots());
+            }
+
+            return true;
+        });
     }
 
     @Override

@@ -5,6 +5,8 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.materials.MaterialCollections;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
@@ -21,6 +23,17 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
         super(ETItems.extra_tools, tier == Tier.ONE ? ETItems.ELECTRIC_COMPOSTER : ETItems.ELECTRIC_COMPOSTER_2,
             RecipeType.ENHANCED_CRAFTING_TABLE, tier.recipe);
         this.tier = tier;
+
+        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+            BlockMenu inv = BlockStorage.getInventory(b);
+
+            if (inv != null) {
+                inv.dropItems(b.getLocation(), getOutputSlots());
+                inv.dropItems(b.getLocation(), getInputSlots());
+            }
+
+            return true;
+        });
     }
 
     @Override
