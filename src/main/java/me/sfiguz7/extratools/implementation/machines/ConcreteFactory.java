@@ -25,7 +25,7 @@ public class ConcreteFactory extends AContainer implements RecipeDisplayItem {
                 new ItemStack(Material.WATER_BUCKET), SlimefunItems.SMALL_CAPACITOR,
                 new ItemStack(Material.WATER_BUCKET)});
 
-        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+        registerBlockHandler(getId(), (p, b, stack, reason) -> {
             BlockMenu inv = BlockStorage.getInventory(b);
 
             if (inv != null) {

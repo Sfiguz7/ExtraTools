@@ -23,7 +23,7 @@ public class Pulverizer extends AContainer implements RecipeDisplayItem {
                 new ItemStack(Material.IRON_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR,
                 new ItemStack(Material.IRON_PICKAXE)});
 
-        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+        registerBlockHandler(getId(), (p, b, stack, reason) -> {
             BlockMenu inv = BlockStorage.getInventory(b);
 
             if (inv != null) {

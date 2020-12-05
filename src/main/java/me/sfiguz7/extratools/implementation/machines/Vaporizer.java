@@ -25,7 +25,7 @@ public class Vaporizer extends AContainer implements RecipeDisplayItem {
                 new ItemStack(Material.MAGMA_BLOCK), SlimefunItems.MEDIUM_CAPACITOR,
                 new ItemStack(Material.MAGMA_BLOCK)});
 
-        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+        registerBlockHandler(getId(), (p, b, stack, reason) -> {
             BlockMenu inv = BlockStorage.getInventory(b);
 
             if (inv != null) {

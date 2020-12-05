@@ -23,7 +23,7 @@ public class GoldTransmuter extends AContainer implements RecipeDisplayItem {
                 new ItemStack(Material.GOLDEN_PICKAXE), SlimefunItems.MEDIUM_CAPACITOR,
                 new ItemStack(Material.GOLDEN_PICKAXE)});
 
-        registerBlockHandler(getID(), (p, b, stack, reason) -> {
+        registerBlockHandler(getId(), (p, b, stack, reason) -> {
             BlockMenu inv = BlockStorage.getInventory(b);
 
             if (inv != null) {
