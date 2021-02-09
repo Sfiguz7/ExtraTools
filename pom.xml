@@ -123,7 +123,7 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-17</version>
+            <version>RC-20</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
