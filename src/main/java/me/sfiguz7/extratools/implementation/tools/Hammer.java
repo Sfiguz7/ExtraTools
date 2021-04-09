@@ -23,7 +23,7 @@ public class Hammer extends SimpleSlimefunItem<ToolUseHandler> {
     @Override
     public ToolUseHandler getItemHandler() {
         return (e, tool, fortune, drops) -> {
-            if (Slimefun.hasUnlocked(e.getPlayer(), Hammer.this, true)) {
+            if (Slimefun.hasPermission(e.getPlayer(), Hammer.this, true)) {
 
                 Block b = e.getBlock();
                 ItemStack drop = getDrop(b);

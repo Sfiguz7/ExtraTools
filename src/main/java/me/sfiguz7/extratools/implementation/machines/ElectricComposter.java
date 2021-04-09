@@ -1,6 +1,7 @@
 package me.sfiguz7.extratools.implementation.machines;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.tags.SlimefunTag;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -10,7 +11,10 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.graalvm.compiler.api.replacements.Snippet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,35 +28,26 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
             RecipeType.ENHANCED_CRAFTING_TABLE, tier.recipe);
         this.tier = tier;
 
-        registerBlockHandler(getId(), (p, b, stack, reason) -> {
-            BlockMenu inv = BlockStorage.getInventory(b);
-
-            if (inv != null) {
-                inv.dropItems(b.getLocation(), getOutputSlots());
-                inv.dropItems(b.getLocation(), getInputSlots());
-            }
-
-            return true;
-        });
+        addItemHandler(onBreak());
     }
 
     @Override
     protected void registerDefaultRecipes() {
 
         for (Material leave : SlimefunTag.LEAVES.getValues()) {
-            registerRecipe(8, new ItemStack[] {new ItemStack(leave, 8)},
-                new ItemStack[] {new ItemStack(Material.DIRT)});
+            registerRecipe(8, new ItemStack[] { new ItemStack(leave, 8) },
+                new ItemStack[] { new ItemStack(Material.DIRT) });
         }
         for (Material sapling : SlimefunTag.SAPLINGS.getValues()) {
-            registerRecipe(8, new ItemStack[] {new ItemStack(sapling, 8)},
-                new ItemStack[] {new ItemStack(Material.DIRT)});
+            registerRecipe(8, new ItemStack[] { new ItemStack(sapling, 8) },
+                new ItemStack[] { new ItemStack(Material.DIRT) });
         }
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.STONE, 4)},
-            new ItemStack[] {new ItemStack(Material.NETHERRACK)});
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.SAND, 2)},
-            new ItemStack[] {new ItemStack(Material.SOUL_SAND)});
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.WHEAT, 4)},
-            new ItemStack[] {new ItemStack(Material.NETHER_WART)});
+        registerRecipe(8, new ItemStack[] { new ItemStack(Material.STONE, 4) },
+            new ItemStack[] { new ItemStack(Material.NETHERRACK) });
+        registerRecipe(8, new ItemStack[] { new ItemStack(Material.SAND, 2) },
+            new ItemStack[] { new ItemStack(Material.SOUL_SAND) });
+        registerRecipe(8, new ItemStack[] { new ItemStack(Material.WHEAT, 4) },
+            new ItemStack[] { new ItemStack(Material.NETHER_WART) });
 
     }
 
@@ -88,16 +83,32 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
         return 256;
     }
 
+    public BlockBreakHandler onBreak() {
+        return new BlockBreakHandler(false, false) {
+
+            @Override
+            public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
+                Block b = e.getBlock();
+                BlockMenu inv = BlockStorage.getInventory(b);
+
+                if (inv != null) {
+                    inv.dropItems(b.getLocation(), getInputSlots());
+                    inv.dropItems(b.getLocation(), getOutputSlots());
+                }
+            }
+        };
+    }
+
     public enum Tier {
         ONE(new ItemStack[] {
             SlimefunItems.GILDED_IRON, SlimefunItems.MAGNESIUM_INGOT, SlimefunItems.GILDED_IRON,
             SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.COMPOSTER, SlimefunItems.ELECTRIC_MOTOR,
-            new ItemStack(Material.IRON_HOE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_HOE)}
+            new ItemStack(Material.IRON_HOE), SlimefunItems.MEDIUM_CAPACITOR, new ItemStack(Material.IRON_HOE) }
         ),
-        TWO(new ItemStack[] {SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.BLISTERING_INGOT_3,
+        TWO(new ItemStack[] { SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.BLISTERING_INGOT_3,
             SlimefunItems.HARDENED_METAL_INGOT,
             SlimefunItems.ELECTRIC_MOTOR, ETItems.ELECTRIC_COMPOSTER, SlimefunItems.ELECTRIC_MOTOR,
-            new ItemStack(Material.DIAMOND_HOE), SlimefunItems.LARGE_CAPACITOR, new ItemStack(Material.DIAMOND_HOE)}
+            new ItemStack(Material.DIAMOND_HOE), SlimefunItems.LARGE_CAPACITOR, new ItemStack(Material.DIAMOND_HOE) }
         );
 
         private final ItemStack[] recipe;

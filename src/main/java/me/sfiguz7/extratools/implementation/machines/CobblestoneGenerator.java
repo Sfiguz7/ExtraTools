@@ -1,6 +1,7 @@
 package me.sfiguz7.extratools.implementation.machines;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
@@ -20,8 +21,11 @@ import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
 
 
 public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implements ETInventoryBlock,
@@ -44,16 +48,8 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
                 SlimefunItems.PROGRAMMABLE_ANDROID_MINER});
 
         createPreset(this, this::constructMenu);
-        
-        registerBlockHandler(getId(), (p, b, stack, reason) -> {
-            BlockMenu inv = BlockStorage.getInventory(b);
 
-            if (inv != null) {
-                inv.dropItems(b.getLocation(), getOutputSlots());
-            }
-
-            return true;
-        });
+        addItemHandler(onBreak());
     }
 
     private void constructMenu(BlockMenuPreset preset) {
@@ -105,6 +101,22 @@ public class CobblestoneGenerator extends SimpleSlimefunItem<BlockTicker> implem
     @Override
     public int getCapacity() {
         return 512;
+    }
+
+    public BlockBreakHandler onBreak() {
+        return new BlockBreakHandler(false, false) {
+
+            @Override
+            public void onPlayerBreak(BlockBreakEvent e, ItemStack item, List<ItemStack> drops) {
+                Block b = e.getBlock();
+                BlockMenu inv = BlockStorage.getInventory(b);
+
+                if (inv != null) {
+                    inv.dropItems(b.getLocation(), getInputSlots());
+                    inv.dropItems(b.getLocation(), getOutputSlots());
+                }
+            }
+        };
     }
 
     @Override
