@@ -1,16 +1,17 @@
 package me.sfiguz7.extratools.implementation.machines;
 
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.tags.SlimefunTag;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -33,11 +34,11 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
     @Override
     protected void registerDefaultRecipes() {
 
-        for (Material leave : SlimefunTag.LEAVES.getValues()) {
+        for (Material leave : Tag.LEAVES.getValues()) {
             registerRecipe(8, new ItemStack[] { new ItemStack(leave, 8) },
                 new ItemStack[] { new ItemStack(Material.DIRT) });
         }
-        for (Material sapling : SlimefunTag.SAPLINGS.getValues()) {
+        for (Material sapling : Tag.SAPLINGS.getValues()) {
             registerRecipe(8, new ItemStack[] { new ItemStack(sapling, 8) },
                 new ItemStack[] { new ItemStack(Material.DIRT) });
         }

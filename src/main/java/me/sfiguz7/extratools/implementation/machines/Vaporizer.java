@@ -1,14 +1,14 @@
 package me.sfiguz7.extratools.implementation.machines;
 
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.sfiguz7.extratools.lists.ETItems;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -36,11 +36,11 @@ public class Vaporizer extends AContainer implements RecipeDisplayItem {
 
         registerRecipe(8, new ItemStack[] {new ItemStack(Material.WATER_BUCKET)},
             new ItemStack[] {new ItemStack(Material.BUCKET),
-                new CustomItem(SlimefunItems.SALT, 4)
+                new CustomItemStack(SlimefunItems.SALT, 4)
             });
         registerRecipe(8, new ItemStack[] {new ItemStack(Material.LAVA_BUCKET)},
             new ItemStack[] {new ItemStack(Material.BUCKET),
-                new CustomItem(SlimefunItems.SULFATE, 16)
+                new CustomItemStack(SlimefunItems.SULFATE, 16)
             });
         registerRecipe(3, new ItemStack[] {new ItemStack(Material.MAGMA_BLOCK)},
             new ItemStack[] {SlimefunItems.SULFATE});
