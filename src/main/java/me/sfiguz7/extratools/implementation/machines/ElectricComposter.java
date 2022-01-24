@@ -70,7 +70,7 @@ public abstract class ElectricComposter extends AContainer implements RecipeDisp
 
     @Override
     public String getInventoryTitle() {
-        return "&cElectric Composter";
+        return this.getId().equals("ELECTRIC_COMPOSTER") ? "&cElectric Composter" : "&cElectric Composter &7(&eII&7)";
     }
 
     @Override
