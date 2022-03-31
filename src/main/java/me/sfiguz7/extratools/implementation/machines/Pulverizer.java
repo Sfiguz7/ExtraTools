@@ -42,8 +42,6 @@ public class Pulverizer extends AContainer implements RecipeDisplayItem {
             new ItemStack[] {new ItemStack(Material.SAND)});
         registerRecipe(8, new ItemStack[] {new ItemStack(Material.COBBLESTONE, 4)},
             new ItemStack[] {new ItemStack(Material.SAND)});
-        registerRecipe(8, new ItemStack[] {new ItemStack(Material.ANDESITE, 4)},
-            new ItemStack[] {new ItemStack(Material.SAND)});
 
         registerRecipe(8, new ItemStack[] {new ItemStack(Material.GRAVEL, 4)},
             new ItemStack[] {new ItemStack(Material.SAND)});
